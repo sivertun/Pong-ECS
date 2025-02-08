@@ -17,6 +17,10 @@ public class PositionComponent implements Component{
         return position.y;
     }
 
+    public Vector2 getPosition() {
+        return new Vector2(position);
+    }
+
     public void setXPosition(float x) {
         position.x = x;
     }

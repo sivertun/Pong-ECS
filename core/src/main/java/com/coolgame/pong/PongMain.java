@@ -11,7 +11,6 @@ import com.coolgame.pong.states.MainGameState;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class PongMain extends ApplicationAdapter {
-    private SpriteBatch batch;
     public static final int WIDTH = 1600;
     public static final int HEIGHT = 720;
     public static final String TITLE = "COOL PONG";
@@ -20,7 +19,6 @@ public class PongMain extends ApplicationAdapter {
 
     @Override
     public void create() {
-        batch = new SpriteBatch();
         gameStateManager = new GameStateManager();
         gameStateManager.setGameState(new MainGameState(gameStateManager));
     }
