@@ -23,7 +23,7 @@ public class RenderSystem implements System{
     }
 
     @Override
-    public void update(List<Entity> entities) {
+    public void update(List<Entity> entities, float dt) {
         for (Entity entity : entities) {
             if (entity.hasComponent(PositionComponent.class)) {
                 PositionComponent positionComponent = (PositionComponent) entity.getComponent(PositionComponent.class);

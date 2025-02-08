@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 public class BoxCollider implements Component{
     Rectangle boundingBox;
 
+
     public BoxCollider(int sizeX, int sizeY) {
         boundingBox = new Rectangle(0, 0, sizeX, sizeY);
     }

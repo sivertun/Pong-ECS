@@ -19,7 +19,7 @@ public class CollisionSystem implements System{
     }
 
     @Override
-    public void update(List<Entity> entities) {
+    public void update(List<Entity> entities, float deltaTime) {
 
     }
 }
