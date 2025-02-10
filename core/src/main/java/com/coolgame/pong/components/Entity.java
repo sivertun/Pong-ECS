@@ -1,5 +1,6 @@
 package com.coolgame.pong.components;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import java.util.HashMap;
@@ -21,6 +22,18 @@ public class Entity {
 
     public <T extends Component> T getComponent(Class<T> componentClass) {
         return componentClass.cast(components.get(componentClass));
+    }
+
+    public void keyDown(int keyCode){
+        for (Component component : components.values()) {
+            component.onKeyPress(keyCode);
+        }
+    }
+
+    public void keyUp(int keyCode){
+        for (Component component : components.values()) {
+            component.onKeyRelease(keyCode);
+        }
     }
 
     public void update() {

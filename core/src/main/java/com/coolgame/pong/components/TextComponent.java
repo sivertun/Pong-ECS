@@ -28,4 +28,14 @@ public class TextComponent extends Component {
     public void update() {
 
     }
+
+    @Override
+    public void onKeyPress(int keycode) {
+
+    }
+
+    @Override
+    public void onKeyRelease(int keycode) {
+
+    }
 }

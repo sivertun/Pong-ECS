@@ -3,18 +3,23 @@ package com.coolgame.pong.states;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.coolgame.pong.PongMain;
+import com.coolgame.pong.components.BoxCollider;
+import com.coolgame.pong.components.Entity;
+import com.coolgame.pong.components.PlayerMovementComponent;
+import com.coolgame.pong.components.TextureComponent;
 import com.coolgame.pong.sprites.Ball;
-import com.coolgame.pong.sprites.PlayerPlatform;
 
 public class MainGameState extends State {
-    private final Ball ball;
-    private final PlayerPlatform player1Platform;
-    private final PlayerPlatform player2Platform;
+
+    private Entity player1Entity;
+    private Entity player2Entity;
+    private Entity ball;
     private final BitmapFont p1ScoreText = new BitmapFont();
     private final BitmapFont p2ScoreText = new BitmapFont();
     private int p1Score = 0;
@@ -23,9 +28,18 @@ public class MainGameState extends State {
     public MainGameState(GameStateManager gameStateManager) {
         super(gameStateManager);
         camera.setToOrtho(false, PongMain.WIDTH, PongMain.HEIGHT);
-        player1Platform = new PlayerPlatform(camera, new Vector2(20, camera.viewportHeight/2 - PlayerPlatform.platformTexture.getHeight()/2));
-        player2Platform = new PlayerPlatform(camera, new Vector2(camera.viewportWidth - PlayerPlatform.platformTexture.getWidth() - 20, camera.viewportHeight/2 - PlayerPlatform.platformTexture.getHeight()/2));
-        ball = new Ball(camera, player2Platform, player2Platform);
+
+        //create player 1
+        player1Entity = new Entity(new Vector2(0, 500));
+        player1Entity.addComponent(new PlayerMovementComponent(new Vector2(0,0),10,null));
+        player1Entity.addComponent(new BoxCollider());
+        player1Entity.addComponent(new TextureComponent(new Texture("platform.png")));
+
+        //create player 2 TODO:
+
+        //create ball TODO:
+
+
         setupInputHandler();
 
         p1ScoreText.getData().setScale(5f);

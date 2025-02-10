@@ -2,7 +2,7 @@ package com.coolgame.pong.components;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public abstract class Component {
+public abstract class Component implements InputListener {
     protected Entity entity;
     public abstract void update();
     public abstract void render(SpriteBatch sb);

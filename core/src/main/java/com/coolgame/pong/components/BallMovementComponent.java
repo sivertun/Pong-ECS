@@ -1,13 +1,16 @@
 package com.coolgame.pong.components;
 
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public class VelocityComponent extends Component{
-    Vector2 velocity;
+public class BallMovementComponent extends Component {
+    private Vector2 velocity;
+    private float speed; // Movement speed for scaling velocity
 
-    public VelocityComponent(float velX, float velY) {
-        velocity = new Vector2(velX, velY);
+    public BallMovementComponent(Vector2 init, float speed) {
+        this.velocity = init;
+        this.speed = speed;
     }
 
     public float getXVelocity() {
@@ -36,11 +39,21 @@ public class VelocityComponent extends Component{
 
     @Override
     public void update() {
-
+        // Here, you could apply velocity to an entity's position if needed
     }
 
     @Override
     public void render(SpriteBatch sb) {
+        // No rendering logic needed for velocity
+    }
+
+    @Override
+    public void onKeyPress(int keycode) {
+
+    }
+
+    @Override
+    public void onKeyRelease(int keycode) {
 
     }
 }
