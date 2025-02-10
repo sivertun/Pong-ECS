@@ -1,36 +1,41 @@
 package com.coolgame.pong.components;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Entity {
-    private final int uid;
-    private static int nextUid = 1;
-    private final Map<Class<? extends Component>, Component> components;
+    private Vector2 position;
+    private Map<Class<? extends Component>, Component> components;
 
-    public Entity() {
-        components = new HashMap<>();
-        uid = nextUid;
-        nextUid++;
+    public Entity(Vector2 position) {
+        this.position = position;
+        this.components = new HashMap<>();
     }
 
-    public int getUid() {
-        return uid;
-    }
-
-    public boolean hasComponent(Class<? extends Component> componentClass) {
-        return components.containsKey(componentClass);
-    }
-
-    public void addComponent(Component component) {
+    public <T extends Component> void addComponent(T component) {
         components.put(component.getClass(), component);
+        component.setEntity(this);
     }
 
-    public Component getComponent(Class<? extends Component> componentClass) {
-        return components.get(componentClass);
+    public <T extends Component> T getComponent(Class<T> componentClass) {
+        return componentClass.cast(components.get(componentClass));
     }
 
-    public void removeComponent(Class<? extends Component> componentClass) {
-        components.remove(componentClass);
+    public void update() {
+        for (Component component : components.values()) {
+            component.update();
+        }
+    }
+
+    public void render(SpriteBatch sb) {
+        for (Component component : components.values()) {
+            component.render(sb);
+        }
+    }
+
+    public Vector2 getPosition() {
+        return position;
     }
 }

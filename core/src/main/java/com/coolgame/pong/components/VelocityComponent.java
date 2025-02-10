@@ -1,8 +1,9 @@
 package com.coolgame.pong.components;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public class VelocityComponent implements Component{
+public class VelocityComponent extends Component{
     Vector2 velocity;
 
     public VelocityComponent(float velX, float velY) {
@@ -31,5 +32,15 @@ public class VelocityComponent implements Component{
 
     public void reverseYVelocity() {
         velocity.y *= -1;
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void render(SpriteBatch sb) {
+
     }
 }
